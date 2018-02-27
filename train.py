@@ -5,6 +5,7 @@ Recursive autoencoder
 import numpy as np
 
 from model import RecursiveAutoencoder
+from decoder import ReverseRecursiveAutoencoder
 from data_operation import DataOperation
 
 
@@ -14,7 +15,8 @@ BATCH_SIZE = 10
 
 
 def main():
-    rae = RecursiveAutoencoder(INPUT_DIM, LATENT_DIM)
+    rae = RecursiveAutoencoder(INPUT_DIM, LATENT_DIM, "load")
+    rrae = ReverseRecursiveAutoencoder(INPUT_DIM, LATENT_DIM)
 
     do = DataOperation()
     for _ in range(10):

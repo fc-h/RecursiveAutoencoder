@@ -32,6 +32,23 @@ class DataOperation():
             seq_vec.append(W2V().str_to_vector(self.w2v_model, word))
         return seq, seq_vec
 
+    def get_random_seq2(self):
+        rand = random.randint(0, len(self.wordlists) - 2)
+        seq_vec1 = []
+        seq_vec2 = []
+        seq1 = self.wordlists[rand]
+        seq2 = self.wordlists[rand + 1]
+        while('' in seq1):
+            seq1.remove('')
+        while('' in seq2):
+            seq2.remove('')
+
+        for word in seq1:
+            seq_vec1.append(W2V().str_to_vector(self.w2v_model, word))
+        for word in seq2:
+            seq_vec2.append(W2V().str_to_vector(self.w2v_model, word))
+        return seq1, seq_vec1, seq2, seq_vec2
+
     def gen_data(self):
         seq_batch = []
         rand = random.randint(0, len(self.wordlists) - 1)
